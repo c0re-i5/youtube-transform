@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a defect in the pipeline
+labels: ["bug"]
+body:
+  - type: textarea
+    id: command
+    attributes:
+      label: Command you ran
+      description: Feel free to redact URLs.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Full stderr / traceback
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: yt-transform-version
+    attributes:
+      label: yt-transform version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: ffmpeg-version
+    attributes:
+      label: ffmpeg version (first line of `ffmpeg -version`)
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS / Python version
+      placeholder: "Ubuntu 24.04 / Python 3.12.3"
+    validations:
+      required: true
+  - type: checkboxes
+    id: cold-cache
+    attributes:
+      label: Reproducibility
+      options:
+        - label: Bug reproduces from a cold cache (deleted `cache/`).
+        - label: Bug only reproduces with a populated cache.

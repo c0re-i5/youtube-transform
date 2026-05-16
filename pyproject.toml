@@ -1,0 +1,87 @@
+[project]
+name = "youtube-transform"
+version = "0.1.0"
+description = "Research project: bandwidth-efficient word-supercut generation from YouTube videos via Whisper-aligned forced timestamps."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "c0re-i5" }]
+keywords = [
+    "whisper",
+    "whisperx",
+    "yt-dlp",
+    "ffmpeg",
+    "forced-alignment",
+    "supercut",
+    "research",
+    "video-processing",
+    "speech-to-text",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "yt-dlp>=2024.5.0",
+    "click>=8.1",
+    "rich>=13.7",
+    # WhisperX gives word-level timestamps via forced alignment.
+    # Install a matching torch wheel separately if you want GPU: see README.
+    "whisperx>=3.1.1 ; platform_system != 'Windows'",
+    "torch>=2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5.0",
+]
+
+[project.urls]
+Homepage   = "https://github.com/c0re-i5/youtube-transform"
+Repository = "https://github.com/c0re-i5/youtube-transform"
+Issues     = "https://github.com/c0re-i5/youtube-transform/issues"
+Changelog  = "https://github.com/c0re-i5/youtube-transform/blob/main/CHANGELOG.md"
+
+[project.scripts]
+yt-transform = "youtube_transform.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ----------------------------------------------------------------------------
+# Tooling
+# ----------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"

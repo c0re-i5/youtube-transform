@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the docs first
+    url: https://github.com/c0re-i5/youtube-transform#readme
+    about: Most usage questions are answered in the README.
+  - name: Ethical use questions
+    url: https://github.com/c0re-i5/youtube-transform/blob/main/ETHICS.md
+    about: Please review ETHICS.md before filing an issue about acceptable use.

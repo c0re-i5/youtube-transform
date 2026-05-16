@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose an idea that fits the project scope
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please read [ETHICS.md](../../ETHICS.md) and
+        [CONTRIBUTING.md](../../CONTRIBUTING.md) first.
+        Features that enable bulk scraping, automation at scale,
+        or content redistribution are out of scope.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What are you trying to do that the current tool makes hard?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: I've read ETHICS.md and confirm this request is within scope.
+          required: true
